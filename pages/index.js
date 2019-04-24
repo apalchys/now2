@@ -19,10 +19,9 @@ function getBrowser() {
 }
 
 export default class Index extends React.Component {
-  constructor() {
-    this.state = {
-      browser: "n/a",
-    };
+
+  state = {
+    browser: "n/a",
   }
 
   componentDidMount() {
