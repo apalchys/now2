@@ -22,7 +22,7 @@ export default class Index extends React.Component {
 
   constructor() {
     this.state = {
-      browser: 'na'
+      browser: 'n/a'
     };
   }
 
