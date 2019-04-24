@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 function getBrowser() {
   if (window && window.navigator.platform.substr(0, 2) === "iP") {
@@ -19,10 +20,9 @@ function getBrowser() {
 }
 
 export default class Index extends React.Component {
-
   state = {
     browser: "n/a",
-  }
+  };
 
   componentDidMount() {
     this.setState({
@@ -33,6 +33,11 @@ export default class Index extends React.Component {
   render() {
     return (
       <div>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+          <link rel="manifest" href="/static/manifest.json" />
+        </Head>
         <div className="hero">
           <h1 className="title">{this.state.browser}</h1>
         </div>
