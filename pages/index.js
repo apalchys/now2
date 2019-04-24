@@ -3,30 +3,29 @@ import Head from "next/head";
 
 function getBrowser() {
   if (window && window.navigator.platform.substr(0, 2) === "iP") {
-    //iOS (iPhone, iPod or iPad)
-    var lte9 = /constructor/i.test(window.HTMLElement);
-    var nav = window.navigator,
-      ua = nav.userAgent,
-      idb = !!window.indexedDB;
-    if (ua.indexOf("Safari") !== -1 && ua.indexOf("Version") !== -1 && !nav.standalone) {
-      return "Safari";
-    } else if ((!idb && lte9) || !window.statusbar.visible) {
-      return "UIWebView";
-    } else if ((window.webkit && window.webkit.messageHandlers) || !lte9 || idb) {
+    if ((window.webkit && window.webkit.messageHandlers)) {
       return "WKWebView";
+    } else {
+      return "Safari";
     }
   }
   return "n/a";
 }
 
+function getUserAgent() {
+  return window.navigator.userAgent;
+}
+
 export default class Index extends React.Component {
   state = {
     browser: "n/a",
+    userAgent: '',
   };
 
   componentDidMount() {
     this.setState({
       browser: getBrowser(),
+      userAgent: getUserAgent(),
     });
   }
 
@@ -40,6 +39,7 @@ export default class Index extends React.Component {
         </Head>
         <div className="hero">
           <h1 className="title">{this.state.browser}</h1>
+          <h1 className="title">{this.state.userAgent}</h1>
         </div>
 
         <style jsx>{`
