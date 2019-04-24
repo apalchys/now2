@@ -19,17 +19,16 @@ function getBrowser() {
 }
 
 export default class Index extends React.Component {
-
   constructor() {
     this.state = {
-      browser: 'n/a'
+      browser: "n/a",
     };
   }
 
   componentDidMount() {
     this.setState({
-      browser: getBrowser()
-    })
+      browser: getBrowser(),
+    });
   }
 
   render() {
